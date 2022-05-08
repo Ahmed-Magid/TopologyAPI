@@ -5,13 +5,14 @@ import com.example.main.topology.component.Component;
 import com.example.main.util.JsonManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 public class TopologyAPI implements API {
 
-    private JsonManager jsonManager;
-    private List<Topology> topologies;
+    private final JsonManager jsonManager;
+    private final List<Topology> topologies;
 
     public TopologyAPI() {
         jsonManager = new JsonManager();
@@ -21,7 +22,7 @@ public class TopologyAPI implements API {
     @Override
     public Topology readJSON(String fileName) {
         Optional<Topology> topology = Optional.ofNullable(jsonManager.readJSON(fileName, Topology.class));
-        topology.ifPresent(topo -> topologies.add(topo));
+        topology.ifPresent(topologies::add);
         return topology.orElse(null);
     }
 
@@ -44,18 +45,19 @@ public class TopologyAPI implements API {
     @Override
     public boolean deleteTopology(String topologyID) {
         Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        return foundTopology.isPresent() && topologies.remove(foundTopology.get());
+        topologies.remove(foundTopology.get());
+        return true;
     }
 
     @Override
     public List<Component> queryDevices(String topologyID) {
         Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        return foundTopology.map(Topology::getComponents).orElse(null);
+        return foundTopology.map(Topology::getComponents).orElse(List.of());
     }
 
     @Override
     public List<Component> queryDevicesWithNetListNode(String topologyID, String netListNodeID) {
         Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        return foundTopology.map(topology -> topology.getComponents().stream().filter(component -> component.getNetlist().containsValue(netListNodeID)).toList()).orElse(null);
+        return foundTopology.map(topology -> topology.getComponents().stream().filter(component -> component.getNetlist().containsValue(netListNodeID)).toList()).orElse(List.of());
     }
 }

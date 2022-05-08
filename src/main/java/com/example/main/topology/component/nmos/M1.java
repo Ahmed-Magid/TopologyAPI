@@ -11,7 +11,7 @@ import lombok.*;
 
 public class M1 {
     @JsonProperty("default")
-    private int defaultValue;
+    private float defaultValue;
     private int min;
     private int max;
 }

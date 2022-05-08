@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.*;
 
 import java.util.Map;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -25,4 +26,17 @@ public abstract class Component {
     protected String type;
     protected String id;
     protected Map<String, String> netlist;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Component component = (Component) o;
+        return Objects.equals(type, component.type) && Objects.equals(id, component.id) && Objects.equals(netlist, component.netlist);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, id, netlist);
+    }
 }

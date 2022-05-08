@@ -17,10 +17,15 @@ public class Topology {
     private List<Component> components;
 
     @Override
-    public boolean equals(Object other) {
-        if (this == other) return true;
-        if (other == null || getClass() != other.getClass()) return false;
-        Topology topology = (Topology) other;
-        return this.id.equals(topology.getId());
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Topology topology = (Topology) o;
+        return Objects.equals(id, topology.id) && Objects.equals(components, topology.components);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, components);
     }
 }
