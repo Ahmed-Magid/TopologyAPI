@@ -9,6 +9,7 @@ public interface API {
     Topology readJSON(String fileName);
     boolean writeJSON(String fileName, String topologyID);
     List<Topology> queryTopologies();
+    Topology findTopology(String topologyID);
     boolean deleteTopology(String topologyID);
     List<Component> queryDevices(String topologyID);
     List<Component> queryDevicesWithNetListNode(String topologyID, String netListNodeID);

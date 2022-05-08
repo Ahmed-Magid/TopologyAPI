@@ -8,6 +8,7 @@ import java.util.HashMap;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 
 public class Resistor extends Component {

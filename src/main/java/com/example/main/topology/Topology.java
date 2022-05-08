@@ -4,6 +4,7 @@ import com.example.main.topology.component.Component;
 import lombok.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -13,5 +14,13 @@ import java.util.List;
 
 public class Topology {
     private String id;
-    List<Component> components;
+    private List<Component> components;
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Topology topology = (Topology) other;
+        return this.id.equals(topology.getId());
+    }
 }
