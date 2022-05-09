@@ -1,7 +1,5 @@
 package com.example.main.topology.component;
 
-import com.example.main.topology.component.nmos.Nmos;
-import com.example.main.topology.component.resistor.Resistor;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -33,10 +31,5 @@ public abstract class Component {
         if (o == null || getClass() != o.getClass()) return false;
         Component component = (Component) o;
         return Objects.equals(type, component.type) && Objects.equals(id, component.id) && Objects.equals(netlist, component.netlist);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(type, id, netlist);
     }
 }

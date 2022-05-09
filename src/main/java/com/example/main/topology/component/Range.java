@@ -1,4 +1,4 @@
-package com.example.main.topology.component.nmos;
+package com.example.main.topology.component;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -9,9 +9,9 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 
-public class M1 {
+public class Range {
     @JsonProperty("default")
     private float defaultValue;
-    private int min;
-    private int max;
+    private float min;
+    private float max;
 }

@@ -4,10 +4,9 @@ import com.example.main.api.API;
 import com.example.main.api.TopologyAPI;
 import com.example.main.topology.Topology;
 import com.example.main.topology.component.Component;
-import com.example.main.topology.component.nmos.M1;
-import com.example.main.topology.component.nmos.Nmos;
-import com.example.main.topology.component.resistor.Resistance;
-import com.example.main.topology.component.resistor.Resistor;
+import com.example.main.topology.component.Range;
+import com.example.main.topology.component.Nmos;
+import com.example.main.topology.component.Resistor;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -31,8 +30,8 @@ public class APITest {
         nmosNetList.put("gate", "vin");
         nmosNetList.put("source", "vss");
         List<Component> components = new ArrayList<>(List.of(
-                new Resistor("res1", new Resistance(100, 10, 1000), resistorNetList),
-                new Nmos("m1", new M1(1.5f, 1, 2), nmosNetList)
+                new Resistor("res1", new Range(100, 10, 1000), resistorNetList),
+                new Nmos("m1", new Range(1.5f, 1, 2), nmosNetList)
         ));
         manualFileTopology = new Topology("top1", components);
     }

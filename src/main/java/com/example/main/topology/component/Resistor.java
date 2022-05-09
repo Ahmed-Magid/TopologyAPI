@@ -1,6 +1,7 @@
-package com.example.main.topology.component.resistor;
+package com.example.main.topology.component;
 
 import com.example.main.topology.component.Component;
+import com.example.main.topology.component.Range;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +15,9 @@ import java.util.Map;
 @AllArgsConstructor
 
 public class Resistor extends Component {
-    private Resistance resistance;
+    private Range resistance;
 
-    public Resistor(String id, Resistance resistance, Map<String, String> netList) {
+    public Resistor(String id, Range resistance, Map<String, String> netList) {
         super("resistor", id, netList);
         this.resistance = resistance;
     }

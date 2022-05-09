@@ -45,8 +45,7 @@ public class TopologyAPI implements API {
     @Override
     public boolean deleteTopology(String topologyID) {
         Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        topologies.remove(foundTopology.get());
-        return true;
+        return foundTopology.isPresent() && topologies.remove(foundTopology.get());
     }
 
     @Override

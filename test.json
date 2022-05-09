@@ -8,9 +8,9 @@
       "t2" : "n1"
     },
     "resistance" : {
-      "min" : 10,
-      "max" : 1000,
-      "default" : 100
+      "min" : 10.0,
+      "max" : 1000.0,
+      "default" : 100.0
     }
   }, {
     "type" : "nmos",
@@ -20,9 +20,9 @@
       "gate" : "vin",
       "source" : "vss"
     },
-    "m(1)" : {
-      "min" : 1,
-      "max" : 2,
+    "m(l)" : {
+      "min" : 1.0,
+      "max" : 2.0,
       "default" : 1.5
     }
   } ]
