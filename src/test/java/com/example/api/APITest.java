@@ -43,29 +43,39 @@ public class APITest {
     }
 
     @Test
-    public void testReadJSON() {
+    void testReadJSON() {
         Assertions.assertEquals(manualFileTopology, fileTopology);
     }
 
     @Test
-    public void testWriteJSON() {
+    void testWriteJSON() {
         Assertions.assertTrue(api.writeJSON("test.json", "top1"));
         Assertions.assertEquals(api.readJSON("test.json"), fileTopology);
     }
 
     @Test
-    public void testDeleteTopology() {
+    void testQueryTopologies() {
+        Assertions.assertTrue(api.queryTopologies().contains(fileTopology));
+    }
+
+    @Test
+    void testFindTopology() {
+        Assertions.assertEquals(api.findTopology("top1"), fileTopology);
+    }
+
+    @Test
+    void testDeleteTopology() {
         Assertions.assertTrue(api.deleteTopology("top1"));
         Assertions.assertFalse(api.queryTopologies().contains(fileTopology));
     }
 
     @Test
-    public void testQueryDevices() {
+    void testQueryDevices() {
         Assertions.assertEquals(api.queryDevices("top1"), manualFileTopology.getComponents());
     }
 
     @Test
-    public void testQueryDevicesWithNetListNode() {
+    void testQueryDevicesWithNetListNode() {
         Assertions.assertEquals(api.queryDevicesWithNetListNode("top1", "vss").get(0), fileTopology.getComponents().get(1));
     }
 }

@@ -32,4 +32,9 @@ public abstract class Component {
         Component component = (Component) o;
         return Objects.equals(type, component.type) && Objects.equals(id, component.id) && Objects.equals(netlist, component.netlist);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, id, netlist);
+    }
 }
