@@ -11,21 +11,9 @@ import java.util.Objects;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode
 
 public class Topology {
     private String id;
     private List<Component> components;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Topology topology = (Topology) o;
-        return Objects.equals(id, topology.id) && Objects.equals(components, topology.components);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, components);
-    }
 }
