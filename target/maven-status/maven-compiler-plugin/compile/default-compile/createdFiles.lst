@@ -1,9 +1,0 @@
-com\example\main\topology\component\Nmos.class
-com\example\main\api\TopologyAPI.class
-com\example\main\api\API.class
-com\example\main\topology\component\Range.class
-com\example\main\util\JsonManager.class
-com\example\main\Main.class
-com\example\main\topology\component\Component.class
-com\example\main\topology\component\Resistor.class
-com\example\main\topology\Topology.class
