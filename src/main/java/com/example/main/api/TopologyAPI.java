@@ -38,7 +38,11 @@ public class TopologyAPI implements API {
 
     @Override
     public Topology findTopology(String topologyID) {
-        return topologies.stream().filter(topology -> topology.getId().equals(topologyID)).findFirst().orElse(null);
+        return topologies.stream()
+                .filter(topology -> topology.getId()
+                        .equals(topologyID))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -49,13 +53,18 @@ public class TopologyAPI implements API {
 
     @Override
     public List<Component> queryDevices(String topologyID) {
-        Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        return foundTopology.map(Topology::getComponents).orElse(List.of());
+        return Optional.ofNullable(findTopology(topologyID))
+                .map(Topology::getComponents)
+                .orElse(List.of());
     }
 
     @Override
     public List<Component> queryDevicesWithNetListNode(String topologyID, String netListNodeID) {
-        Optional<Topology> foundTopology = Optional.ofNullable(findTopology(topologyID));
-        return foundTopology.map(topology -> topology.getComponents().stream().filter(component -> component.getNetlist().containsValue(netListNodeID)).toList()).orElse(List.of());
+        return Optional.ofNullable(findTopology(topologyID))
+                .map(topology -> topology.getComponents()
+                        .stream()
+                .filter(component -> component.getNetlist().containsValue(netListNodeID))
+                        .toList())
+                .orElse(List.of());
     }
 }

@@ -1,4 +1,4 @@
-package com.example.api;
+package com.example.main.api;
 
 import com.example.main.api.API;
 import com.example.main.api.TopologyAPI;
@@ -29,10 +29,10 @@ public class APITest {
         nmosNetList.put("drain", "n1");
         nmosNetList.put("gate", "vin");
         nmosNetList.put("source", "vss");
-        List<Component> components = new ArrayList<>(List.of(
+        List<Component> components = List.of(
                 new Resistor("res1", new Range(100, 10, 1000), resistorNetList),
                 new Nmos("m1", new Range(1.5f, 1, 2), nmosNetList)
-        ));
+        );
         manualFileTopology = new Topology("top1", components);
     }
 
