@@ -24,16 +24,30 @@ A software that provides the functionality to access, manage and store device to
 - A topology contains a number of different kinds of components and a net list.
 - This software allows you to do the following:
   #### 1. Read a topology from JSON file and store it in memory.
-  	 Topology readJSON(String fileName);
+  ```java
+  Topology readJSON(String fileName);
+  ```
   #### 2. Write a topology object to a JSON file.
-  	boolean writeJSON(String fileName, String topologyID);
+  ```java
+  boolean writeJSON(String fileName, String topologyID);
+  ```
   #### 3. Query about the topology currently in the memory.
-  	List<Topology> queryTopologies();
+  ```java
+  List<Topology> queryTopologies();
+  ```
   #### 4. Find a topology in the memory given its ID.
-  	Topology findTopology(String topologyID);`
+  ```java
+  Topology findTopology(String topologyID);
+  ```
   #### 5. Delete a topology from the memory given its ID.
-  	boolean deleteTopology(String topologyID);
+  ```java
+  boolean deleteTopology(String topologyID);
+  ```
   #### 6. List the components of a topology given its ID.
-  	List<Component> queryDevices(String topologyID);
+  ```java
+  List<Component> queryDevices(String topologyID);
+  ```
   #### 7. List the components of a topology that are connected to given net list, given the ID of the topology.
-  	List<Component> queryDevicesWithNetListNode(String topologyID, String netListNodeID);
+  ```java
+  List<Component> queryDevicesWithNetListNode(String topologyID, String netListNodeID);
+  ```
